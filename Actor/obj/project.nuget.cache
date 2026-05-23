@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jIuQa2QQeh0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Samu\\fSharp\\Actor\\Actor.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Samu\\.nuget\\packages\\fsharp.core\\10.1.201\\fsharp.core.10.1.201.nupkg.sha512"
+  ],
+  "logs": []
+}

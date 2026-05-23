@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="Actor">
+    <resource name="FSharpSignatureData.Actor" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.Actor" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.Actor" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.Actor" action="remove"></resource>
+    <resource name="FSharpOptimizationData.Actor" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.Actor" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.Actor" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.Actor" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.Actor" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.Actor" action="remove"></resource>
+  </assembly>
+</linker>
