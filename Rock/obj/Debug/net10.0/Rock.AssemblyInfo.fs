@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("Rock")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+401593b62a5f6106582bf678b4b9a26bb4984fb4")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15943003acec79c19025178d88f46d18fd70db47")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("Rock")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("Rock")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]
