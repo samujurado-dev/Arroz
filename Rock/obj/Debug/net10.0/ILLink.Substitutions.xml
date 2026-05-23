@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="Rock">
+    <resource name="FSharpSignatureData.Rock" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.Rock" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.Rock" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.Rock" action="remove"></resource>
+    <resource name="FSharpOptimizationData.Rock" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.Rock" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.Rock" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.Rock" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.Rock" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.Rock" action="remove"></resource>
+  </assembly>
+</linker>

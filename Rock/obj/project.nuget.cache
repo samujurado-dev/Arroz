@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "dIy3fFrUYpw=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Samu\\fSharp\\Rock\\Rock.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Samu\\.nuget\\packages\\fsharp.core\\10.1.201\\fsharp.core.10.1.201.nupkg.sha512"
+  ],
+  "logs": []
+}
