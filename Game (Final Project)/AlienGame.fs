@@ -152,31 +152,38 @@ let actualizarEnemigo state =
 
 
 let detectarColisionConAlien state =
-    state.MisilesEnemigos
-    |> List.filter (fun misil -> not (misil.X = state.AlienX+1 && misil.Y = state.AlienY))
-    |> fun nuevosMisiles ->
-        if nuevosMisiles.Length <> state.MisilesEnemigos.Length then 
-            {state with 
-                AlienState=Hit
-                MisilesEnemigos=nuevosMisiles
-                RedibujarPantalla=true
-                ColisionAlien=state.Tick
-                Lives =  state.Lives - 1
-            }
-        else
-            state
+    if state.AlienState = Alive then
+        state.MisilesEnemigos
+        |> List.filter (fun misil -> not (misil.X = state.AlienX+1 && misil.Y = state.AlienY))
+        |> fun nuevosMisiles ->
+            if nuevosMisiles.Length <> state.MisilesEnemigos.Length then 
+                {state with 
+                    AlienState=Hit
+                    MisilesEnemigos=nuevosMisiles
+                    RedibujarPantalla=true
+                    ColisionAlien=state.Tick
+                    Lives =  state.Lives - 1
+                }
+            else
+                state
+    else
+        state
+        
 let detectarColisionConEnemigo state =
-    state.Misiles
-    |> List.filter (fun misil -> not (misil.X = state.EnemigoX-1 && misil.Y = state.EnemigoY))
-    |> fun nuevosMisiles ->
-        if nuevosMisiles.Length <> state.Misiles.Length then 
-            {state with 
-                EnemigoEstado=Hit
-                Misiles=nuevosMisiles
-                RedibujarPantalla=true
-                ColisionEnemigo=state.Tick
-                Puntuación = state.Puntuación+1
-            }
+    if state.EnemigoEstado = Alive then
+        state.Misiles
+        |> List.filter (fun misil -> not (misil.X = state.EnemigoX-1 && misil.Y = state.EnemigoY))
+        |> fun nuevosMisiles ->
+            if nuevosMisiles.Length <> state.Misiles.Length then 
+                {state with 
+                    EnemigoEstado=Hit
+                    Misiles=nuevosMisiles
+                    RedibujarPantalla=true
+                    ColisionEnemigo=state.Tick
+                    Puntuación = state.Puntuación+1
+                }
+            else
+                state
         else
             state
 

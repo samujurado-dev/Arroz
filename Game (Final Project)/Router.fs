@@ -27,7 +27,7 @@ type GameState =
 
 type State = {
     MainState: GameState
-    EstadoAlien: App.AlienGame.State option
+    EstadoAlien: AlienGame.State option
 }
 
 let estadoInicial = {
@@ -45,7 +45,7 @@ let mostrarMenuPrincipal state =
     | CargarJuego ->
         if File.Exists(rutaGuardado) then
             let json = File.ReadAllText(rutaGuardado)
-            let LoadGame = JsonSerializer.Deserialize<App.AlienGame.State>(json, opcionesJson)
+            let LoadGame = JsonSerializer.Deserialize<AlienGame.State>(json, opcionesJson)
             { state with MainState = ShowingGame; EstadoAlien = Some LoadGame }
         else
             { state with MainState = ShowingMainMenu }
