@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "OKtsFJxE1sk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Samu\\fSharp\\Game (Final Project)\\Game.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Samu\\.nuget\\packages\\fsharp.core\\10.1.201\\fsharp.core.10.1.201.nupkg.sha512",
+    "C:\\Users\\Samu\\.nuget\\packages\\fsharp.systemtextjson\\1.4.36\\fsharp.systemtextjson.1.4.36.nupkg.sha512"
+  ],
+  "logs": []
+}

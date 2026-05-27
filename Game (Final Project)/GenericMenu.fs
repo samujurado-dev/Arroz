@@ -1,0 +1,85 @@
+module App.GenericMenu
+
+open System
+open System.Threading
+
+//
+// Esta linea es para traer los simbolos
+// del module App.Utils
+//
+open Utils
+
+type MenuState =
+| Active
+| Terminated
+
+
+type State<'C> = {
+    MenuState: MenuState
+    X: int
+    Y: int
+    CurSorSelection: int
+    CursorX: int
+    Commands: ('C * string) array
+    RedrawScreen: bool
+}
+
+
+let initialState x y commands = 
+    {
+        MenuState = Active
+        X = x
+        Y = y
+        CurSorSelection = 0
+        CursorX = x-2
+        Commands = commands
+        RedrawScreen = true
+    }
+
+let drawMenu state =
+    state.Commands
+    |> Array.iteri (fun i (_,legend) ->
+        mostrarMensaje state.X (state.Y+i) ConsoleColor.Cyan legend
+    )
+
+    mostrarMensaje state.CursorX (state.Y+state.CurSorSelection) ConsoleColor.Yellow "*"
+
+let updateMenuKeyboard key state =
+    let newState =
+        match key with 
+        | ConsoleKey.UpArrow -> {state with CurSorSelection = max 0 (state.CurSorSelection-1)}
+        | ConsoleKey.DownArrow -> {state with CurSorSelection = min (state.Commands.Length-1) (state.CurSorSelection+1)}
+        | ConsoleKey.Enter -> {state with MenuState = Terminated}
+        | _ -> state
+
+    if newState <> state then 
+        {newState with RedrawScreen = true}
+    else
+        state
+
+
+let pipeline = [||]
+
+let myLoop() = 
+    createMainLoop
+        pipeline 
+        (fun s -> s.MenuState = Active)
+        [|updateMenuKeyboard|]
+        [|drawMenu|]
+        (fun s -> s.RedrawScreen)
+        (fun s -> {s with RedrawScreen=false})
+
+let mostrar x y commands =
+    let oldForeground = Console.ForegroundColor
+    Console.CursorVisible <- false
+
+    let state =
+        initialState x y commands
+        |> myLoop()
+
+    Console.CursorVisible <- true
+    Console.ForegroundColor <- oldForeground
+    Console.Clear()
+
+    fst state.Commands[state.CurSorSelection]
+    
