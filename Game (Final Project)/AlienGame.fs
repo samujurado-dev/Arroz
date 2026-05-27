@@ -35,6 +35,7 @@ type State = {
     ColisionAlien: int
     ColisionEnemigo: int
     Puntuación: int
+    Reloj: int
 }
 
 let estadoInicial = {
@@ -54,6 +55,7 @@ let estadoInicial = {
     ColisionAlien = 0
     ColisionEnemigo = 0
     Puntuación = 0
+    Reloj = 0
 }
 
 let dibujarAlien state =
@@ -87,7 +89,10 @@ let dibujarVidas state =
 
 let dibujarPuntuación state =
     mostrarMensaje 0 0 ConsoleColor.Blue $"{state.Puntuación}"
-    
+
+let dibujarReloj state =
+    mostrarMensaje 10 0 ConsoleColor.Blue $"{state.Reloj}"
+
 let redibujarPantalla state =
     if state.RedibujarPantalla then 
         Console.Clear()
@@ -98,6 +103,7 @@ let redibujarPantalla state =
             dibujarMisilesEnemigos
             dibujarVidas
             dibujarPuntuación
+            dibujarReloj
         |]
         |> Array.iter (fun f -> f state)
         {state with RedibujarPantalla=false}
@@ -115,6 +121,12 @@ let actualizarMisiles state =
         |> Seq.toList
         |> fun nuevosMisiles ->
             {state with Misiles = nuevosMisiles;RedibujarPantalla=true} 
+    else
+        state
+
+let actualizarReloj state =
+    if state.Tick = 40 then
+        {state with Reloj = state.Reloj+1}
     else
         state
 
@@ -149,8 +161,7 @@ let actualizarEnemigo state =
             {state with EnemigoY=y;EnemigoDir=dir;RedibujarPantalla=true}
     else
         state
-
-
+        
 let detectarColisionConAlien state =
     if state.AlienState = Alive then
         state.MisilesEnemigos
@@ -250,6 +261,7 @@ let procesarTeclado state =
 let rec mainLoop state =
     state
     |> actualizarTick
+    |> actualizarReloj
     |> actualizarMisiles
     |> actualizarEnemigo
     |> actualizarDisparoEnemigo
